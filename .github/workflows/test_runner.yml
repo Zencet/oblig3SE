@@ -1,9 +1,6 @@
 name: Run Tests
 
-on:
-  push:
-    branches:
-      - main  # Adjust this to the branch you want to trigger tests on
+on: [push]
 
 jobs:
   test:
@@ -25,5 +22,5 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest
+        pytest -v -s
       working-directory: ${{ github.workspace }}
