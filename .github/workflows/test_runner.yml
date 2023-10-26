@@ -1,0 +1,29 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to the branch you want to trigger tests on
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+      working-directory: ${{ github.workspace }}
+
+    - name: Run tests
+      run: |
+        pytest
+      working-directory: ${{ github.workspace }}
